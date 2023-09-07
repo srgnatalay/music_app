@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -31,10 +30,25 @@ class SeekBar extends StatefulWidget {
 class _SeekBarState extends State<SeekBar> {
   double? dragValue;
 
+  String _formatDuration(Duration? duration) {
+    if (duration == null) {
+      return "--:--";
+    } else {
+      String minutes = duration.inMinutes.toString().padLeft(2, "0");
+      String seconds =
+          duration.inSeconds.remainder(60).toString().padLeft(2, "0");
+      return "$minutes:$seconds";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
+        Text(
+          _formatDuration(widget.position),
+          style: const TextStyle(color: Colors.white),
+        ),
         Expanded(
           child: SliderTheme(
             data: SliderTheme.of(context).copyWith(
@@ -53,14 +67,40 @@ class _SeekBarState extends State<SeekBar> {
             ),
             child: Slider(
               min: 0,
-              value: max(
-                dragValue ?? widget.position.inMilliseconds.toDouble() + 1,
-                widget.position.inMilliseconds.toDouble() + 1,
+              max: widget.duration.inMilliseconds.toDouble(),
+              value: min(
+                dragValue ?? widget.position.inMilliseconds.toDouble(),
+                widget.duration.inMilliseconds.toDouble(),
               ),
-              onChanged: (value) {},
+              onChanged: (value) {
+                setState(() {
+                  dragValue = value;
+                });
+                if (widget.onChanged != null) {
+                  widget.onChanged!(
+                    Duration(
+                      milliseconds: value.round(),
+                    ),
+                  );
+                }
+              },
+              onChangeEnd: (value) {
+                if (widget.onChangeEnd != null) {
+                  widget.onChangeEnd!(
+                    Duration(
+                      milliseconds: value.round(),
+                    ),
+                  );
+                }
+                dragValue = null;
+              },
             ),
           ),
-        )
+        ),
+        Text(
+          _formatDuration(widget.duration),
+          style: const TextStyle(color: Colors.white),
+        ),
       ],
     );
   }

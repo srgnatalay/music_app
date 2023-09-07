@@ -1,7 +1,10 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:music_app/models/song_model.dart';
 import 'package:music_app/widgets/background_filter.dart';
+import 'package:music_app/widgets/music_player.dart';
 import 'package:music_app/widgets/seekbar.dart';
 import 'package:rxdart/rxdart.dart' as rxdart;
 
@@ -13,7 +16,7 @@ class SongPage extends StatefulWidget {
 }
 
 class _SongPageState extends State<SongPage> {
-  Song song = Song.songs[0];
+  Song song = Get.arguments ?? Song.songs[0];
   AudioPlayer audioPlayer = AudioPlayer();
 
   @override
@@ -49,6 +52,13 @@ class _SongPageState extends State<SongPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            FluentIcons.arrow_circle_left_12_filled,
+            size: 35,
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -61,16 +71,10 @@ class _SongPageState extends State<SongPage> {
             fit: BoxFit.cover,
           ),
           const BackgroundFilter(),
-          StreamBuilder<SeekBarData>(
-            stream: _seekBarDataStream,
-            builder: (context, snapshot) {
-              final positionData = snapshot.data;
-              return SeekBar(
-                position: positionData?.duration ?? Duration.zero,
-                duration: positionData?.duration ?? Duration.zero,
-                onChangeEnd: audioPlayer.seek,
-              );
-            },
+          MusicPlayer(
+            song: song,
+            seekBarDataStream: _seekBarDataStream,
+            audioPlayer: audioPlayer,
           ),
         ],
       ),
