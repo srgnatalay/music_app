@@ -15,7 +15,7 @@ class SearchMusic extends StatelessWidget {
             "Hoş Geldiniz",
             style: Theme.of(context)
                 .textTheme
-                .bodyLarge!
+                .titleLarge!
                 .copyWith(color: Colors.white),
           ),
           const SizedBox(height: 5),

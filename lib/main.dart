@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:music_app/pages/home_page.dart';
+import 'package:music_app/pages/playlist_page.dart';
 import 'package:music_app/pages/song_page.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         getPages: [
           GetPage(name: "/", page: () => const HomePage()),
           GetPage(name: "/song", page: () => const SongPage()),
-          // GetPage(name: "/playlist", page: () =>  const PlaylistPage()),
+          GetPage(name: "/playlist", page: () => const PlaylistPage()),
         ]);
   }
 }
