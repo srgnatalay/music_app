@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/utils/config.dart';
 
 class BackgroundFilter extends StatelessWidget {
   const BackgroundFilter({
@@ -13,9 +14,9 @@ class BackgroundFilter extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.white,
-              Colors.white.withOpacity(.5),
-              Colors.white.withOpacity(0),
+              Config.secondaryColor,
+              Config.secondaryColor.withOpacity(.5),
+              Config.secondaryColor.withOpacity(0),
             ],
             stops: const [
               0,
@@ -25,16 +26,7 @@ class BackgroundFilter extends StatelessWidget {
       },
       blendMode: BlendMode.dstOut,
       child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.deepPurple.shade200,
-              Colors.deepPurple.shade800,
-            ],
-          ),
-        ),
+        decoration: Config.gradientBG(),
       ),
     );
   }

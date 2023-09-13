@@ -1,5 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/utils/config.dart';
 
 class CustomNavbar extends StatelessWidget {
   const CustomNavbar({super.key});
@@ -8,7 +9,7 @@ class CustomNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.deepPurple.shade700,
+      backgroundColor: Config.primaryColor.shade700,
       unselectedItemColor: Colors.white,
       selectedItemColor: Colors.white,
       showUnselectedLabels: false,

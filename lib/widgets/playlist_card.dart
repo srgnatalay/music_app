@@ -2,6 +2,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_app/models/playlist_model.dart';
+import 'package:music_app/utils/config.dart';
 
 class PlayListCard extends StatelessWidget {
   const PlayListCard({
@@ -17,12 +18,9 @@ class PlayListCard extends StatelessWidget {
       onTap: () => Get.toNamed("/playlist", arguments: playList),
       child: Container(
         height: 75,
-        margin: const EdgeInsets.only(bottom: 10),
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.deepPurple.shade800.withOpacity(.6),
-          borderRadius: BorderRadius.circular(15),
-        ),
+        margin: Config.marginBot,
+        padding: Config.paddingHorizontal,
+        decoration: Config.playlistCardDec(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -42,17 +40,12 @@ class PlayListCard extends StatelessWidget {
                 children: [
                   Text(
                     playList.title,
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                    style: Config.playlistTitle(context),
                   ),
                   Text(
                     "${playList.songs.length} şarkı",
                     maxLines: 2,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: Colors.white.withOpacity(.8),
-                        ),
+                    style: Config.playlistSongs(context),
                   )
                 ],
               ),
@@ -61,7 +54,7 @@ class PlayListCard extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 FluentIcons.play_circle_20_regular,
-                color: Colors.white,
+                color: Config.secondaryColor,
               ),
             )
           ],

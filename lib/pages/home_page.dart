@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/models/playlist_model.dart';
 import 'package:music_app/models/song_model.dart';
+import 'package:music_app/utils/config.dart';
 import 'package:music_app/widgets/custom_appbar.dart';
 import 'package:music_app/widgets/custom_navbar.dart';
 import 'package:music_app/widgets/music_playlist.dart';
@@ -16,16 +17,7 @@ class HomePage extends StatelessWidget {
     List<Playlist> playList = Playlist.playList;
 
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Colors.deepPurple.shade800.withOpacity(.8),
-            Colors.deepPurple.shade200.withOpacity(.8),
-          ],
-        ),
-      ),
+      decoration: Config.gradientBG(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: const CustomAppbar(),

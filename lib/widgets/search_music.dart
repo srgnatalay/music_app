@@ -1,5 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/utils/config.dart';
 
 class SearchMusic extends StatelessWidget {
   const SearchMusic({super.key});
@@ -7,41 +8,32 @@ class SearchMusic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: Config.paddingAll,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "Hoş Geldiniz",
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .copyWith(color: Colors.white),
+            style: Config.welcomeText(context),
           ),
-          const SizedBox(height: 5),
+          Config.heightSmall,
           Text(
             "En sevdiğiniz müziğin keyfini çıkarın",
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+            style: Config.appDescription(context),
           ),
-          const SizedBox(height: 20),
+          Config.heightMedium20,
           TextFormField(
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Config.secondaryColor,
               hintText: "Ara",
-              hintStyle: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(color: Colors.grey.shade400),
+              hintStyle: Config.searchText(context),
               prefixIcon: Icon(
                 FluentIcons.search_20_regular,
-                color: Colors.grey.shade400,
+                color: Config.thirdColor.shade400,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: Config.borderCircular,
                 borderSide: BorderSide.none,
               ),
             ),

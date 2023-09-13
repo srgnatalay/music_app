@@ -1,5 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/utils/config.dart';
 
 class PlayOrShuffleSwitch extends StatefulWidget {
   const PlayOrShuffleSwitch({
@@ -26,10 +27,7 @@ class _PlayOrShuffleSwitchState extends State<PlayOrShuffleSwitch> {
       child: Container(
         height: 50,
         width: width,
-        decoration: BoxDecoration(
-          color: Colors.deepPurple.shade600,
-          borderRadius: BorderRadius.circular(15),
-        ),
+        decoration: Config.switchDec(),
         child: Stack(
           children: [
             AnimatedPositioned(
@@ -38,10 +36,7 @@ class _PlayOrShuffleSwitchState extends State<PlayOrShuffleSwitch> {
               child: Container(
                 height: 50,
                 width: width * .45,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
+                decoration: Config.animatedButton(),
               ),
             ),
             Row(
@@ -53,16 +48,15 @@ class _PlayOrShuffleSwitchState extends State<PlayOrShuffleSwitch> {
                       Center(
                         child: Text(
                           "Başlat",
-                          style: TextStyle(
-                            color: isPlay ? Colors.deepPurple : Colors.white,
-                            fontSize: 17,
-                          ),
+                          style: Config.playSwitch(isPlay),
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      Config.widthSmall,
                       Icon(
                         FluentIcons.play_circle_20_filled,
-                        color: isPlay ? Colors.deepPurple : Colors.white,
+                        color: isPlay
+                            ? Config.primaryColor
+                            : Config.secondaryColor,
                       ),
                     ],
                   ),
@@ -74,16 +68,15 @@ class _PlayOrShuffleSwitchState extends State<PlayOrShuffleSwitch> {
                       Center(
                         child: Text(
                           "Karıştır",
-                          style: TextStyle(
-                            color: isPlay ? Colors.white : Colors.deepPurple,
-                            fontSize: 17,
-                          ),
+                          style: Config.shuffleSwitch(isPlay),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Icon(
                         FluentIcons.arrow_shuffle_20_filled,
-                        color: isPlay ? Colors.white : Colors.deepPurple,
+                        color: isPlay
+                            ? Config.secondaryColor
+                            : Config.primaryColor,
                       ),
                     ],
                   ),

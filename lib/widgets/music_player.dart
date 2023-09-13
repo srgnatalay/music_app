@@ -2,6 +2,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:music_app/models/song_model.dart';
+import 'package:music_app/utils/config.dart';
 import 'package:music_app/widgets/player_butons.dart';
 import 'package:music_app/widgets/seekbar.dart';
 
@@ -20,30 +21,22 @@ class MusicPlayer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 45,
-      ),
+      padding: Config.paddingSymmetric,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             song.title,
-            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Config.songTitle(context),
           ),
-          const SizedBox(height: 10),
+          Config.heightMedium10,
           Text(
             song.description,
             maxLines: 2,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Colors.white,
-                ),
+            style: Config.songDescription(context),
           ),
-          const SizedBox(height: 30),
+          Config.heightLarge,
           StreamBuilder<SeekBarData>(
             stream: _seekBarDataStream,
             builder: (context, snapshot) {
@@ -65,7 +58,7 @@ class MusicPlayer extends StatelessWidget {
                 iconSize: 35,
                 icon: const Icon(
                   FluentIcons.settings_20_filled,
-                  color: Colors.white,
+                  color: Config.secondaryColor,
                 ),
               ),
               IconButton(
@@ -73,7 +66,7 @@ class MusicPlayer extends StatelessWidget {
                 iconSize: 35,
                 icon: const Icon(
                   FluentIcons.cloud_arrow_down_20_filled,
-                  color: Colors.white,
+                  color: Config.secondaryColor,
                 ),
               ),
             ],

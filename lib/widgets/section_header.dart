@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/utils/config.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;
@@ -16,17 +17,11 @@ class SectionHeader extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+          style: Config.sectionHeaderTitle(context),
         ),
         Text(
           action,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+          style: Config.sectionHeaderAction(context),
         ),
       ],
     );

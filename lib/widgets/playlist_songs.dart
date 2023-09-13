@@ -1,6 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/models/playlist_model.dart';
+import 'package:music_app/utils/config.dart';
 
 class PlaylistSongs extends StatelessWidget {
   const PlaylistSongs({
@@ -19,31 +20,23 @@ class PlaylistSongs extends StatelessWidget {
       itemBuilder: (context, index) {
         return ListTile(
           leading: Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: Config.paddingTopS,
             child: Text(
               "${index + 1}",
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+              style: Config.playlistIndex(context),
             ),
           ),
           title: Text(
             playList.songs[index].title,
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+            style: Config.playlistIndexTitle(context),
           ),
           subtitle: Text(
             playList.songs[index].description,
-            style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                  color: Colors.white,
-                ),
+            style: Config.playlistIndexDescription(context),
           ),
           trailing: const Icon(
             FluentIcons.more_vertical_20_filled,
-            color: Colors.white,
+            color: Config.secondaryColor,
           ),
         );
       },

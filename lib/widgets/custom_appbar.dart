@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/utils/config.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbar({super.key});
@@ -11,7 +12,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       leading: const Icon(Icons.grid_view_rounded),
       actions: [
         Container(
-          margin: const EdgeInsets.only(right: 20),
+          margin: Config.marginTop,
           child: const CircleAvatar(
             backgroundImage: NetworkImage(
                 "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80"),

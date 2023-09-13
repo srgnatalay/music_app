@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/models/playlist_model.dart';
+import 'package:music_app/utils/config.dart';
 import 'package:music_app/widgets/custom_navbar.dart';
 import 'package:music_app/widgets/play_or_shuffle_switch.dart';
 import 'package:music_app/widgets/playlist_information.dart';
@@ -18,16 +19,7 @@ class _PlaylistPageState extends State<PlaylistPage> {
     Playlist playList = Playlist.playList[0];
 
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Colors.deepPurple.shade800.withOpacity(.8),
-            Colors.deepPurple.shade200.withOpacity(.8),
-          ],
-        ),
-      ),
+      decoration: Config.gradientBG(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -39,11 +31,11 @@ class _PlaylistPageState extends State<PlaylistPage> {
         bottomNavigationBar: const CustomNavbar(),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: Config.paddingAll,
             child: Column(
               children: [
                 PlaylistInformation(playList: playList),
-                const SizedBox(height: 30),
+                Config.heightLarge,
                 const PlayOrShuffleSwitch(),
                 PlaylistSongs(playList: playList)
               ],

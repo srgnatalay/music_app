@@ -1,6 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:music_app/utils/config.dart';
 
 class PlayerButtons extends StatelessWidget {
   const PlayerButtons({
@@ -24,7 +25,7 @@ class PlayerButtons extends StatelessWidget {
               iconSize: 40,
               icon: const Icon(
                 FluentIcons.previous_20_filled,
-                color: Colors.white,
+                color: Config.secondaryColor,
               ),
             );
           },
@@ -40,7 +41,7 @@ class PlayerButtons extends StatelessWidget {
                 return Container(
                   width: 64,
                   height: 64,
-                  margin: const EdgeInsets.all(10),
+                  margin: Config.marginAll,
                   child: const CircularProgressIndicator(),
                 );
               } else if (!audioPlayer.playing) {
@@ -49,7 +50,7 @@ class PlayerButtons extends StatelessWidget {
                   iconSize: 75,
                   icon: const Icon(
                     FluentIcons.play_circle_20_filled,
-                    color: Colors.white,
+                    color: Config.secondaryColor,
                   ),
                 );
               } else if (processingState != ProcessingState.completed) {
@@ -58,7 +59,7 @@ class PlayerButtons extends StatelessWidget {
                   iconSize: 75,
                   icon: const Icon(
                     FluentIcons.pause_circle_20_filled,
-                    color: Colors.white,
+                    color: Config.secondaryColor,
                   ),
                 );
               } else {
@@ -70,7 +71,7 @@ class PlayerButtons extends StatelessWidget {
                   iconSize: 75,
                   icon: const Icon(
                     FluentIcons.replay_20_filled,
-                    color: Colors.white,
+                    color: Config.secondaryColor,
                   ),
                 );
               }
@@ -87,12 +88,11 @@ class PlayerButtons extends StatelessWidget {
               iconSize: 40,
               icon: const Icon(
                 FluentIcons.next_20_filled,
-                color: Colors.white,
+                color: Config.secondaryColor,
               ),
             );
           },
         ),
-        
       ],
     );
   }

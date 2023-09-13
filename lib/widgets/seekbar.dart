@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:music_app/utils/config.dart';
 
 class SeekBarData {
   final Duration position;
@@ -47,7 +48,7 @@ class _SeekBarState extends State<SeekBar> {
       children: [
         Text(
           _formatDuration(widget.position),
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Config.secondaryColor),
         ),
         Expanded(
           child: SliderTheme(
@@ -60,10 +61,10 @@ class _SeekBarState extends State<SeekBar> {
               overlayShape: const RoundSliderOverlayShape(
                 overlayRadius: 10,
               ),
-              activeTrackColor: Colors.white.withOpacity(.2),
-              inactiveTrackColor: Colors.white,
-              thumbColor: Colors.white,
-              overlayColor: Colors.white,
+              activeTrackColor: Config.secondaryColor.withOpacity(.2),
+              inactiveTrackColor: Config.secondaryColor,
+              thumbColor: Config.secondaryColor,
+              overlayColor: Config.secondaryColor,
             ),
             child: Slider(
               min: 0,
@@ -99,7 +100,7 @@ class _SeekBarState extends State<SeekBar> {
         ),
         Text(
           _formatDuration(widget.duration),
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Config.secondaryColor),
         ),
       ],
     );

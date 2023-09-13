@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/models/playlist_model.dart';
+import 'package:music_app/utils/config.dart';
 import 'package:music_app/widgets/playlist_card.dart';
 import 'package:music_app/widgets/section_header.dart';
 
@@ -14,12 +15,12 @@ class PlaylistMusic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: Config.paddingAll,
       child: Column(
         children: [
           const SectionHeader(title: "Çalma Listesi"),
           ListView.builder(
-            padding: const EdgeInsets.only(top: 20),
+            padding: Config.paddingTopM,
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: playList.length,

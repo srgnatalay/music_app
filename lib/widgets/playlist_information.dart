@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/models/playlist_model.dart';
+import 'package:music_app/utils/config.dart';
 
 class PlaylistInformation extends StatelessWidget {
   const PlaylistInformation({
@@ -22,13 +23,10 @@ class PlaylistInformation extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        const SizedBox(height: 30),
+        Config.heightLarge,
         Text(
           playList.title,
-          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+          style: Config.playlistInfoTitle(context),
         ),
       ],
     );
